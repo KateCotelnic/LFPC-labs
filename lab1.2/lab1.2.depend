@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1583788791 source:d:\2 курс 2 семестр\vdovicenco lfpc\lab1.2\main.cpp
+	<bits/stdc++.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
