@@ -1,0 +1,10 @@
+fnc sum (a, b) {
+    s = a + b;
+    return s;
+}
+main {
+    a = 4;
+    b = 8;
+    s = sum (a, b);
+    print (s);
+}
