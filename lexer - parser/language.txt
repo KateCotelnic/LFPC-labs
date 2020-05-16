@@ -1,6 +1,6 @@
 fnc sum (a, b) {
     s = a + b;
-    return s;
+    return (s);
 }
 main {
     a = 4;

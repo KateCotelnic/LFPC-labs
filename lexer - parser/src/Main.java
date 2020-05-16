@@ -7,13 +7,11 @@ public class Main {
     public static void main(String[] args) throws IOException {
         String str = new String(Files.readAllBytes(Paths.get("language.txt")), StandardCharsets.UTF_8);
 //        System.out.println(str);
-        String s = str.replaceAll(System.getProperty("line.separator")," ");
+        String s = str.replaceAll(System.getProperty("line.separator"), " ");
 //        System.out.println(s);
         Lexer lexer = new Lexer(s);
-        String[] tok = lexer.getTokens().getTokens();
-        String[] id = lexer.getTokens().getIdentifiers();
-        for(int i=0;i<tok.length;i++){
-            System.out.println(tok[i] + " - " + id[i]);
-        }
+        Tokens tokens = new Tokens(Lexer.createTokens()[0], Lexer.createTokens()[1]);
+        Parser parser = new Parser(tokens);
+        ParseTree parseTree = new ParseTree(Parser.createParseTree());
     }
 }

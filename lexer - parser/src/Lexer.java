@@ -1,19 +1,11 @@
 public class Lexer {
 
-    private String input;
-    private Tokens tokens;
+    private static String input;
 
     public Lexer(String input) {
         this.input = input;
-        createTokens();
-    }
-
-    public Tokens getTokens() {
-        return tokens;
-    }
-
-    public void setTokens(Tokens tokens) {
-        this.tokens = tokens;
+//        this.tokens.setIdentifiers(createTokens()[1]);
+//        this.tokens.setTokens(createTokens()[0]);
     }
 
     private static boolean isNumeric(String strNum) {
@@ -28,54 +20,55 @@ public class Lexer {
         return true;
     }
 
-    private void createTokens(){
+    static String[][] createTokens(){
 
-        String[] word = new String[43];
-        String[] ident = new String[43];
+        String[] word = new String[45];
+        String[] ident = new String[45];
         word[0] = "main";
         word[1] = "{";
         word[2] = "}";
         int i = 0, k = 0;
         String news;
+        String[][] array = new String[2][word.length];
         try {
-            int n = this.input.length();
+            int n = input.length();
 //            System.out.println("n = " + n);
-            while (i < this.input.length() - 4) {
+            while (i < input.length() - 4) {
                 news = "";
-                while (this.input.charAt(i) == ' ' || this.input.charAt(i) == '\n')
+                while (input.charAt(i) == ' ' || input.charAt(i) == '\n')
                     i++;
-                if (this.input.charAt(i) == '(') {
-                    word[k] = "" + this.input.charAt(i);
+                if (input.charAt(i) == '(') {
+                    word[k] = "" + input.charAt(i);
                     k++;
                     i++;
-                } else if (this.input.charAt(i) == '{' || this.input.charAt(i) == '}' || this.input.charAt(i) == ';') {
-                    word[k] = "" + this.input.charAt(i);
+                } else if (input.charAt(i) == '{' || input.charAt(i) == '}' || input.charAt(i) == ';') {
+                    word[k] = "" + input.charAt(i);
                     k++;
                     i++;
                 }
-                if (this.input.charAt(i + 1) == ',' || (this.input.charAt(i + 1) == ')')) {
-                    word[k] = "" + this.input.charAt(i);
+                if (input.charAt(i + 1) == ',' || (input.charAt(i + 1) == ')')) {
+                    word[k] = "" + input.charAt(i);
                     k++;
                     i++;
-                    word[k] = "" + this.input.charAt(i);
+                    word[k] = "" + input.charAt(i);
                     k++;
                     i++;
-                } else if (this.input.charAt(i + 1) == ';') {
-                    word[k] = "" + this.input.charAt(i);
+                } else if (input.charAt(i + 1) == ';') {
+                    word[k] = "" + input.charAt(i);
                     k++;
                     i++;
-                    word[k] = "" + this.input.charAt(i);
+                    word[k] = "" + input.charAt(i);
                     k++;
                     i++;
                 } else {
-                    while (this.input.charAt(i) == ' ')
+                    while (input.charAt(i) == ' ')
                         i++;
-                    while (this.input.charAt(i) != ' ') {
-                        news += this.input.charAt(i);
+                    while (input.charAt(i) != ' ') {
+                        news += input.charAt(i);
                         i++;
                     }
                     word[k] = news;
-                    while (this.input.charAt(i) == ' ')
+                    while (input.charAt(i) == ' ')
                         i++;
                     k++;
 //            System.out.println(news);
@@ -83,8 +76,8 @@ public class Lexer {
 //            System.out.println("here " + this.input.charAt(i));
                 }
             }
-            word[k] = "" + this.input.charAt(i);
-            word[k + 1] = "" + this.input.charAt(i + 2);
+            word[k] = "" + input.charAt(i);
+            word[k + 1] = "" + input.charAt(i + 2);
 
             String newfnc = "";
             for (i = 0; i < word.length; i++) {
@@ -115,18 +108,21 @@ public class Lexer {
                     ident[i] = "identifier";
                 }
             }
-
             for (i = 0; i < word.length; i++) {
-                System.out.println(i + ": " + word[i] + "  -  " + ident[i] + ".");
+//                System.out.println(i + ": " + word[i] + "  -  " + ident[i] + ".");
+                array[0][i] = word[i];
+                array[1][i] = ident[i];
             }
-            Tokens tk = null;
-            tk.setTokens(word);
-            tk.setIdentifiers(ident);
-            this.tokens = tk;
+            return array;
+//            this.tokens.setTokens(word);
+//            for(i=0;i<this.tokens.getTokens().length;i++){
+//                System.out.print(this.tokens.getTokens()[i] + " ");
+//            }
+//            this.tokens.setIdentifiers(ident);
         }
         catch (NullPointerException e){
             System.out.println("sorry");
         }
+        return array;
     }
-
 }
