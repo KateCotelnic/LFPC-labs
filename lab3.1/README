@@ -1,0 +1,95 @@
+Regular Grammar:
+G = {Vn, Vt, P, S}
+Vn = {S, A, B, C, D}
+Vt = {a, b}
+P = { 
+A -> a | BD | aDADB | 
+B -> b | ASB | 
+S -> aB | DA | 
+C -> BA | 
+D -> e | BA | 
+}
+After elimination of epsilon:
+G = {Vn, Vt, P, S}
+Vn = {A, B, S, C, D}
+Vt = {a, b}
+P = { 
+A -> a | BD | aDADB | B | aAB | 
+B -> b | ASB | 
+S -> aB | DA | A | 
+C -> BA | 
+D -> BA | 
+}
+After elimination of unit-production:
+G = {Vn, Vt, P, S}
+Vn = {A, B, S, C, D}
+Vt = {a, b}
+P = { 
+A -> a | BD | aDADB | aAB | b | ASB | 
+B -> b | ASB | 
+S -> aB | DA | a | BD | aDADB | aAB | b | ASB | 
+C -> BA | 
+D -> BA | 
+}
+After elimination of inaccessible:
+G = {Vn, Vt, P, S}
+Vn = {A, B, S, D}
+Vt = {a, b}
+P = { 
+A -> a | BD | aDADB | aAB | b | ASB | 
+B -> b | ASB | 
+S -> aB | DA | a | BD | aDADB | aAB | b | ASB | 
+D -> BA | 
+}
+After elimination of non-productive:
+G = {Vn, Vt, P, S}
+Vn = {A, B, S, D}
+Vt = {a, b}
+P = { 
+A -> a | BD | aDADB | aAB | b | ASB | 
+B -> b | ASB | 
+S -> aB | DA | a | BD | aDADB | aAB | b | ASB | 
+D -> BA | 
+}
+Chomsky Normal Form without optimization:
+G = {Vn, Vt, P, S}
+Vn = {A, B, S, D, C, E, Z, Y, X, W, F, G, H, R, Q, P, O, I, J, K}
+Vt = {a, b}
+P = { 
+A -> a | BD | b | ZY | GF | AH | 
+B -> b | AE | 
+C -> a | 
+D -> BA | 
+E -> SB | 
+F -> AB | 
+G -> a | 
+H -> SB | 
+I -> AB | 
+J -> a | 
+K -> SB | 
+O -> DA | 
+P -> DB | 
+Q -> OP | 
+R -> a | 
+S -> DA | a | BD | b | CB | RQ | JI | AK | 
+W -> DA | 
+X -> DB | 
+Y -> WX | 
+Z -> a | 
+}
+Chomsky Normal Form:
+G = {Vn, Vt, P, S}
+Vn = {A, B, S, D, C, E, Y, X, W, F}
+Vt = {a, b}
+P = { 
+A -> a | BD | b | CY | CF | AE | 
+B -> b | AE | 
+S -> DA | a | BD | b | CB | CY | CF | AE | 
+C -> a | 
+D -> BA | 
+E -> SB | 
+F -> AB | 
+W -> DA | 
+X -> DB | 
+Y -> WX | 
+}
