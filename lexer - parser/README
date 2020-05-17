@@ -1,0 +1,28 @@
+Tokens:
+fnc - keyword | sum - function | ( - parameter separator | a - identifier | , - separator | b - identifier | ) - parameter separator |
+{ - function separator | s - identifier | = - assignment | a - identifier | + - math operator | b - identifier | ; - separator |
+return - function | ( - parameter separator | s - identifier | ) - parameter separator | ; - separator | } - function separator |
+main - keyword | { - function separator | a - identifier | = - assignment | 4 - number | ; - separator | b - identifier | = - assignment |
+8 - number | ; - separator | s - identifier | = - assignment | sum - function | ( - parameter separator | a - identifier | , - separator |
+b - identifier | ) - parameter separator | ; - separator | print - function | ( - parameter separator | s - identifier |
+) - parameter separator | ; - separator | } - function separator | 
+
+17
+Parse tree:
+0. fnc -> sum
+1. sum -> (, {
+2. ( -> a, b, )
+3. { -> =, return, }
+4. = -> s, +
+5. + -> a, b
+6. return -> (
+7. ( -> s, )
+8. main -> {
+9. { -> =, =, =, print, }
+10. = -> a, 4
+11. = -> b, 8
+12. = -> s, sum
+13. sum -> (
+14. ( -> a, b, )
+15. print -> (
+16. ( -> s, )
